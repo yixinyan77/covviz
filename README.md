@@ -21,17 +21,28 @@ and sparsity views for the same symmetric matrix:
 
 ## Install
 
-From this repository:
+Install the latest version directly from GitHub:
 
 ```bash
+pip install git+https://github.com/yixinyan77/covviz.git
+```
+
+For local development, clone the repository first and then install it in
+editable mode:
+
+```bash
+git clone https://github.com/yixinyan77/covviz.git
+cd covviz
 pip install -e .
 ```
 
-For development:
+Install development dependencies for running tests:
 
 ```bash
 pip install -e ".[dev]"
 ```
+
+`pip install covviz` will work only after the package is published to PyPI.
 
 ## Quick Start
 
