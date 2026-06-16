@@ -8,6 +8,7 @@ from typing import Callable
 from .layout import apply_titles, make_axes
 from .plots.chord import plot_chord
 from .plots.contour import plot_contour
+from .plots.covariance_graph import plot_covariance_graph
 from .plots.heatmap import plot_heatmap
 from .plots.network import plot_network
 from .plots.sparsity import plot_sparsity
@@ -19,6 +20,8 @@ PLOTTERS: dict[str, PlotFunc] = {
     "heatmap": plot_heatmap,
     "chord": plot_chord,
     "contour": plot_contour,
+    "covariance_graph": plot_covariance_graph,
+    "covgraph": plot_covariance_graph,
     "network": plot_network,
     "sparsity": plot_sparsity,
 }

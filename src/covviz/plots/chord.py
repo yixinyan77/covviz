@@ -6,7 +6,7 @@ from collections.abc import Sequence
 from math import cos, pi, sin
 
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyArrowPatch
+from matplotlib.patches import Circle, FancyArrowPatch
 import numpy as np
 
 
@@ -21,6 +21,8 @@ def plot_chord(
     positive_color: str = "#2563eb",
     negative_color: str = "#dc2626",
     node_color: str = "#f8fafc",
+    ring_color: str = "#334155",
+    ring_linewidth: float = 1.4,
     label_color: str = "#111827",
     max_linewidth: float = 5.0,
     alpha: float = 0.68,
@@ -34,6 +36,17 @@ def plot_chord(
     labels = labels or [str(i) for i in range(matrix.shape[0])]
     points = _circle_points(len(labels), node_radius)
     max_weight = _max_offdiag_abs(matrix, threshold)
+
+    ring = Circle(
+        (0.0, 0.0),
+        radius=node_radius,
+        fill=False,
+        edgecolor=ring_color,
+        linewidth=ring_linewidth,
+        alpha=0.85,
+        zorder=0,
+    )
+    ax.add_patch(ring)
 
     for i in range(matrix.shape[0]):
         for j in range(i + 1, matrix.shape[1]):

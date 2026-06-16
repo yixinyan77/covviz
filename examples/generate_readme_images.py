@@ -33,6 +33,7 @@ def main() -> None:
     plot_specs = [
         ("heatmap", {"triangle": "upper", "annotate": True, "colorbar": False}),
         ("chord", {"threshold": 0.2}),
+        ("covariance_graph", {"threshold": 0.2}),
         ("network", {"threshold": 0.22, "layout": "circular"}),
         ("contour", {"levels": 12, "colorbar": False}),
         ("sparsity", {"threshold": 0.2}),
@@ -43,7 +44,7 @@ def main() -> None:
         fig.savefig(assets / f"{kind}.png", dpi=180, bbox_inches="tight")
         plt.close(fig)
 
-    fig, axes = plt.subplots(1, len(plot_specs), figsize=(17, 3.6))
+    fig, axes = plt.subplots(1, len(plot_specs), figsize=(20, 3.6))
     for ax, (kind, kwargs) in zip(axes, plot_specs):
         cv.plot(matrix, kind=kind, labels=labels, ax=ax, **kwargs)
         ax.set_title(kind)

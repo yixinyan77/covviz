@@ -39,6 +39,12 @@ def test_network_plot_accepts_threshold():
     assert fig is axes[0].figure
 
 
+def test_covariance_graph_plot_accepts_threshold():
+    fig, axes = cv.plot(spd(5), kind="covariance_graph", threshold=0.2)
+
+    assert fig is axes[0].figure
+
+
 def test_heatmap_accepts_triangle_and_annotations():
     fig, axes = cv.plot(spd(4), kind="heatmap", triangle="upper", annotate=True, colorbar=False)
 

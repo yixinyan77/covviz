@@ -8,12 +8,16 @@ Matplotlib figure with either one panel or an automatically arranged grid.
 
 ![covviz gallery](assets/gallery.png)
 
-`covviz` currently includes heatmap, chord, network, contour, and sparsity
-views for the same symmetric matrix:
+`covviz` currently includes heatmap, chord, covariance graph, network, contour,
+and sparsity views for the same symmetric matrix:
 
-| Heatmap | Chord | Network | Contour | Sparsity |
-| --- | --- | --- | --- | --- |
-| ![heatmap](assets/heatmap.png) | ![chord](assets/chord.png) | ![network](assets/network.png) | ![contour](assets/contour.png) | ![sparsity](assets/sparsity.png) |
+| Heatmap | Chord | Covariance Graph |
+| --- | --- | --- |
+| ![heatmap](assets/heatmap.png) | ![chord](assets/chord.png) | ![covariance graph](assets/covariance_graph.png) |
+
+| Network | Contour | Sparsity |
+| --- | --- | --- |
+| ![network](assets/network.png) | ![contour](assets/contour.png) | ![sparsity](assets/sparsity.png) |
 
 ## Install
 
@@ -62,6 +66,12 @@ Network view:
 cv.plot(cov, kind="network", threshold=0.25)
 ```
 
+Covariance graph view:
+
+```python
+cv.plot(cov, kind="covariance_graph", threshold=0.25)
+```
+
 Annotated upper-triangle heatmap:
 
 ```python
@@ -80,7 +90,8 @@ cv.plot(cov, kind="sparsity", threshold=0.5)
 The current MVP supports:
 
 - `heatmap`: signed matrix heatmap centered on zero by default.
-- `chord`: circular chord-style view of off-diagonal relationships.
+- `chord`: circular chord-style view of off-diagonal relationships with an outer ring.
+- `covariance_graph`: compact signed covariance network in the original demo style.
 - `network`: weighted undirected network from off-diagonal relationships.
 - `contour`: filled or line contour view of the matrix surface.
 - `sparsity`: thresholded signed sparsity pattern.
