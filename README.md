@@ -4,6 +4,17 @@
 covariance-like matrices. It accepts one matrix or many matrices and returns a
 Matplotlib figure with either one panel or an automatically arranged grid.
 
+## Gallery
+
+![covviz gallery](assets/gallery.png)
+
+`covviz` currently includes heatmap, chord, network, contour, and sparsity
+views for the same symmetric matrix:
+
+| Heatmap | Chord | Network | Contour | Sparsity |
+| --- | --- | --- | --- | --- |
+| ![heatmap](assets/heatmap.png) | ![chord](assets/chord.png) | ![network](assets/network.png) | ![contour](assets/contour.png) | ![sparsity](assets/sparsity.png) |
+
 ## Install
 
 From this repository:
