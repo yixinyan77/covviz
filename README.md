@@ -58,6 +58,9 @@ fig, axes = cv.plot(cov, kind="heatmap")
 fig.savefig("covariance-heatmap.png", dpi=200)
 ```
 
+All plotting calls return `(fig, axes)`, so the result can be saved or adjusted
+with normal Matplotlib methods.
+
 Multiple matrices are arranged automatically:
 
 ```python
@@ -100,12 +103,14 @@ cv.plot(cov, kind="sparsity", threshold=0.5)
 
 The current MVP supports:
 
-- `heatmap`: signed matrix heatmap centered on zero by default.
-- `chord`: circular chord-style view of off-diagonal relationships with an outer ring.
-- `covariance_graph`: compact signed covariance network in the original demo style.
-- `network`: weighted undirected network from off-diagonal relationships.
-- `contour`: filled or line contour view of the matrix surface.
-- `sparsity`: thresholded signed sparsity pattern.
+| Kind | Best For |
+| --- | --- |
+| `heatmap` | Quickly inspecting signed magnitude patterns. |
+| `chord` | Showing strong pairwise relationships around a circular layout. |
+| `covariance_graph` | Compact graph comparisons in covariance-estimation experiments. |
+| `network` | More explicit node-link structure with labels and signed edges. |
+| `contour` | Treating the matrix as a smooth surface-like field. |
+| `sparsity` | Inspecting thresholded support or zero/nonzero structure. |
 
 ## Input Rules
 
@@ -138,6 +143,7 @@ fig, axes = cv.plot(
 
 ## Roadmap
 
+- Add GitHub Actions release checks and PyPI publishing workflow.
 - Add modularity/community visualization as an optional extra.
 - Add richer documentation notebooks.
 - Publish to PyPI after the first GitHub release.

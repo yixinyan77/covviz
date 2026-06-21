@@ -3,6 +3,7 @@ import matplotlib
 matplotlib.use("Agg")
 
 import numpy as np
+import pandas as pd
 import pytest
 
 import covviz as cv
@@ -62,6 +63,26 @@ def test_sparsity_plot_accepts_threshold():
     fig, axes = cv.plot(spd(5), kind="sparsity", threshold=0.5)
 
     assert fig is axes[0].figure
+
+
+def test_covgraph_alias():
+    fig, axes = cv.plot(spd(5), kind="covgraph", threshold=0.2)
+
+    assert fig is axes[0].figure
+
+
+def test_dataframe_input_uses_index_labels():
+    labels = ["a", "b", "c"]
+    frame = pd.DataFrame(spd(3), index=labels, columns=labels)
+
+    _, axes = cv.plot(frame, kind="heatmap", colorbar=False)
+
+    assert [tick.get_text() for tick in axes[0].get_xticklabels()] == labels
+
+
+def test_rejects_unknown_kind():
+    with pytest.raises(MatrixInputError, match="Unknown plot kind"):
+        cv.plot(spd(3), kind="unknown")
 
 
 def test_rejects_non_symmetric_matrix():
